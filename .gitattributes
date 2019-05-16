@@ -1,0 +1,12 @@
+# Git
+.gitattributes export-ignore
+.gitignore export-ignore
+
+# Documents
+LICENSE.md export-ignore
+README.md export-ignore
+
+# Eclipse
+.buildpath export-ignore
+.editorconfig export-ignore
+.project export-ignore
