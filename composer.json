@@ -1,13 +1,13 @@
 {
-    "name": "getkirby/pluginkit",
-    "description": "Kirby Example Plugin",
+    "name": "kerli81/securedpages",
+    "description": "Protect pages from unauthorized users",
     "type": "kirby-plugin",
-    "version" : "0.5.0",
+    "version" : "0.5.1",
     "license": "MIT",
     "authors": [
         {
-            "name": "Your Name",
-            "email": "you@example.com"
+            "name": "Pascal Rusch",
+            "email": "git@paru.ch"
         }
     ],
     "require": {
