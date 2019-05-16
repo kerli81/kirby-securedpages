@@ -1,0 +1,23 @@
+type: group
+fields:
+  securedpageenabled:
+    type: toggle
+    label: 
+      en: Page Security
+      de: Seitensichtbarkeit
+    text: 
+      en: Enable the page protection?
+      de: Soll die Seite geschützt werden?
+
+  securedpageroles:
+    label: 
+      en: Roles
+      de: Rollen
+    type: multiselect
+    options: query
+    when:
+      securedpageenabled: true
+    query:
+      fetch: kirby.roles
+      text: "{{ item.title }}"
+      value: "{{ item.id }}"
