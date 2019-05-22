@@ -1,62 +1,108 @@
-# Kirby Pluginkit: Example plugin for Kirby
 
-> Variant "Setup with autoloader"
+# Kirby Secured Pages
 
-This is a boilerplate for a Kirby plugin that can be installed via all three [supported installation methods](https://getkirby.com/docs/guide/plugins/plugin-setup-basic#the-three-plugin-installation-methods).
+![Version](https://img.shields.io/badge/Version-0.5.1-blue.svg) ![License](https://img.shields.io/badge/License-MIT-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-3.x-f0c674.svg)
 
-You can find a list of Pluginkit variants on the [`master` branch](https://github.com/getkirby/pluginkit/tree/master).
+With this plugin for [Kirby CMS](http://getkirby.com) you can prevent unauthorized users to access a page or a hierarchy of pages. The permission will be granted by a user gorup. If the user is not yet logged in, the login page will be displayed.
 
-****
+## Requirements
 
-## How to use the Pluginkit
-
-1. Fork this repository
-2. Change the plugin name and description in the `composer.json`
-3. Change the plugin name in the `index.php`
-4. Change the license if you don't want to publish under MIT
-5. Add your plugin code to the `index.php` and the `src` directory
-6. Update this `README` with instructions for your plugin
-
-We have a tutorial on how to build your own plugin based on the Pluginkit [in the Kirby documentation](https://getkirby.com/docs/guide/plugins/plugin-setup-autoloader).
-
-What follows is an example README for your plugin.
++ Kirby CMS, Version **3.x**
 
 ****
 
-## Installation
+# Installation
 
-### Download
+## Download
 
-Download and copy this repository to `/site/plugins/{{ plugin-name }}`.
+Download and extract this repository, rename the folder to `securedpages` and drop it into the plugins folder of your Kirby 3 installation. You should end up with a folder structure like this:
 
-### Git submodule
-
-```
-git submodule add https://github.com/{{ your-name }}/{{ plugin-name }}.git site/plugins/{{ plugin-name }}
+```cmd
+site/plugins/securedpages/
 ```
 
-### Composer
+## Composer
 
+If you are using Composer, you can install the plugin with
+
+```cmd
+composer require kerli81/securedpages
 ```
-composer require {{ your-name }}/{{ plugin-name }}
+
+## Git submodule
+
+```cmd
+git submodule add https://github.com/kerli81/kerby-securedpages.git site/plugins/securedpages
 ```
 
-## Setup
 
-*Additional instructions on how to configure the plugin (e.g. blueprint setup, config options, etc.)*
+****
+
+# Usage
+
+## Blueprint
+To enable the configuration for the page security your blueprint needs to include the security field. Here an example ho such a page blueprint could look like.
+
+```yml
+title: Page
+
+columns:
+  # main
+  - width: 2/3
+    sections:
+      content:
+        type: fields
+        fields:
+          text:
+            text:
+            type: textarea
+            size: large
+            
+  # sidebar
+  - width: 1/3
+    sections:
+        securityconfig:
+            type: fields
+            fields:
+                security: fields/securedpage
+        pages:
+            type: pages
+        files:
+            type: files
+```
+![Template](/.github/template.png?raw=true "Template")
+
+## User Group
+The plugin will check if a user is part of a certain user group. To create such a group, create a *.yml file in folder ```blueprints/users/```. You will find below an example of a group definition. 
+
+```yml
+title: Webpage Access
+
+permissions:
+  access:
+    panel: false
+```
+
+To use the group create a new user on the panel. 
+
+## Secure a page incl. sub pages
+Go to the page which you will protected and enable the protection. After you enabled it a user group selction field will be displayed. Select the just defined group.
+
+![Protection Configuration](/.github/security_area.png?raw=true "Protection Configuration")
 
 ## Options
 
-*Document the options and APIs that this plugin offers*
+### Default Behavior
+If you navigate to a page with is protected and you are not logged in or your uer has part of the correct user group, your request is forwarded to ```/no-permission``` with a remark you have not enough permissions and you have to login. For that there is a link which forwards you to the standard panel login form.
 
-## Development
+### Adjust texts of default behavior
+to adjust the texts just override the provided options:
 
-*Add instructions on how to help working on the plugin (e.g. npm setup, Composer dev dependencies, etc.)*
+Option | Default | Description
+------ | ------- | -----------
+kerli81.securedpages.nopermission.title | No Permission | Page Title
+kerli81.securedpages.nopermission.text | Page is protected. Please (link:panel text:Login) | The text of the page
+kerli81.securedpages.nopermission.template | error | This template will be displayed. If such a template does not exists, kirby will take the default template.
 
-## License
 
-MIT
 
-## Credits
-
-- [Your Name](https://github.com/ghost)
