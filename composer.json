@@ -2,7 +2,7 @@
     "name": "kerli81/securedpages",
     "description": "Protect pages from unauthorized users",
     "type": "kirby-plugin",
-    "version" : "0.5.1",
+    "version" : "1.0.0",
     "license": "MIT",
     "authors": [
         {
