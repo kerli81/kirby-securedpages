@@ -45,7 +45,7 @@ Kirby::plugin('kerli81/securedpages', [
         ]
     ],
     'blueprints' => [
-        'fields/securedpage' => __DIR__ . '/blueprints/fields/pagesecurity.yml'
+        'fields/kerli81.securedpages.pageconfiguration' => __DIR__ . '/blueprints/fields/pagesecurity.yml'
     ]
 ]);
 

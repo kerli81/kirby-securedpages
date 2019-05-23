@@ -1,0 +1,25 @@
+title: Protected Page
+
+columns:
+  # main
+  - width: 2/3
+    sections:
+      content:
+        type: fields
+        fields:
+          text:
+            text:
+            type: textarea
+            size: large
+            
+  # sidebar
+  - width: 1/3
+    sections:
+        securityconfig:
+            type: fields
+            fields:
+                security: fields/kerli81.securedpages.pageconfiguration
+        pages:
+            type: pages
+        files:
+            type: files

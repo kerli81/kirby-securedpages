@@ -1,0 +1,6 @@
+title: Webpage Access
+description: Usergroup for frontend access
+
+permissions:
+  access:
+    panel: false
