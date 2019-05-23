@@ -44,7 +44,7 @@ git submodule add https://github.com/kerli81/kerby-securedpages.git site/plugins
 To enable the configuration for the page security your blueprint needs to include the security field. Here an example ho such a page blueprint could look like.
 
 ```yml
-title: Page
+title: Protected Page
 
 columns:
   # main
@@ -64,7 +64,7 @@ columns:
         securityconfig:
             type: fields
             fields:
-                security: fields/securedpage
+                security: fields/kerli81.securedpages.pageconfiguration
         pages:
             type: pages
         files:
@@ -77,6 +77,7 @@ The plugin will check if a user is part of a certain user group. To create such 
 
 ```yml
 title: Webpage Access
+description: Usergroup for frontend access
 
 permissions:
   access:
