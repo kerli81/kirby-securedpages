@@ -2,6 +2,8 @@
 
 namespace Plugin\SecuredPage;
 
+@include_once __DIR__ . '/vendor/autoload.php';
+
 use Kirby;
 use Kirby\Cms\Page;
 
@@ -23,7 +25,7 @@ Kirby::plugin('kerli81/securedpages', [
                 $hook = new RouterAfterHook();
                 $result = $hook->process($result, $this->user());
 
-                if (! $result) {
+                if (!$result) {
                     go('/no-permission');
                 }
             }
@@ -48,5 +50,3 @@ Kirby::plugin('kerli81/securedpages', [
         'fields/kerli81.securedpages.pageconfiguration' => __DIR__ . '/blueprints/fields/pagesecurity.yml'
     ]
 ]);
-
-?>
