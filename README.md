@@ -101,9 +101,9 @@ to adjust the texts just override the provided options:
 
 Option | Default | Description
 ------ | ------- | -----------
-kerli81.securedpages.nopermission.title | No Permission | Page Title
-kerli81.securedpages.nopermission.text | Page is protected. Please (link:panel text:Login) | The text of the page
-kerli81.securedpages.nopermission.template | error | This template will be displayed. If such a template does not exists, kirby will take the default template.
+kerli81.securedpages.panel.title | No Permission | Page Title
+kerli81.securedpages.panel.text | Page is protected. Please (link:panel text:Login) | The text of the page
+kerli81.securedpages.panel.template | error | This template will be displayed. If such a template does not exists, kirby will take the default template.
 
 
 

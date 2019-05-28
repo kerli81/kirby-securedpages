@@ -14,10 +14,10 @@ load([
 
 Kirby::plugin('kerli81/securedpages', [
     'options' => [
-        'logintype' => 'form', // [form, panel]
-        'nopermission.title' => 'No Permission',
-        'nopermission.text' => 'Page is protected. Please (link:panel text:Login)',
-        'nopermission.template' => 'error',
+        'logintype' => 'panel', // [loginform, panel]
+        'panel.title' => 'No Permission',
+        'panel.text' => 'Page is protected. Please (link:panel text:Login)',
+        'panel.template' => 'error',
         'loginform.username.name' => 'User-name',
         'loginform.username.error' => 'Please enter your username',
         'loginform.password.name' => 'Psss-word',
@@ -44,13 +44,13 @@ Kirby::plugin('kerli81/securedpages', [
                 if (option('kerli81.securedpages.logintype') == 'panel') {
                     return new Page([
                         'slug' => 'no-permission',
-                        'template' => option('kerli81.securedpages.nopermission.template'),
+                        'template' => option('kerli81.securedpages.panel.template'),
                         'content' => [
-                            'title' => option('kerli81.securedpages.nopermission.title'),
-                            'text' => option('kerli81.securedpages.nopermission.text')
+                            'title' => option('kerli81.securedpages.panel.title'),
+                            'text' => option('kerli81.securedpages.panel.text')
                         ]
                     ]);
-                } else if (option('kerli81.securedpages.logintype') == 'form') {
+                } else if (option('kerli81.securedpages.logintype') == 'loginform') {
                     return new Page([
                         'slug' => 'no-permission',
                         'template' => 'loginform'
