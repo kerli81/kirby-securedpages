@@ -57,9 +57,9 @@ Kirby::plugin('kerli81/securedpages', [
         'fields/kerli81.securedpages.pageconfiguration' => __DIR__ . '/blueprints/fields/pagesecurity.yml'
     ],
     'controllers' => [
-        'loginform' => require __DIR__ . '/src/LoginFormCtrl.php'
+        'loginform' => require __DIR__ . '/src/loginform/LoginFormCtrl.php'
     ],
     'templates' => [
-        'loginform' => __DIR__ . '/src/LoginFormTmpl.php'
+        'loginform' => __DIR__ . '/src/loginform/LoginFormTmpl.php'
     ]
 ]);
