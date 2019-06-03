@@ -3,11 +3,11 @@ fields:
   securedpageenabled:
     type: toggle
     label: 
-      en: Page Security
+      en: Page Protection
       de: Seitensichtbarkeit
     text: 
-      en: Enable the page protection?
-      de: Soll die Seite geschützt werden?
+      en: Enable the page password protection?
+      de: Die Seite mit Passwort schützen?
 
   securedpageroles:
     label: 
