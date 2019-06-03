@@ -2,6 +2,8 @@
 
 namespace Plugin\SecuredPage;
 
+@include_once __DIR__ . '/vendor/autoload.php';
+
 use Kirby;
 use Kirby\Cms\Page;
 
@@ -12,9 +14,12 @@ load([
 
 Kirby::plugin('kerli81/securedpages', [
     'options' => [
-        'nopermission.title' => 'No Permission',
-        'nopermission.text' => 'Page is protected. Please (link:panel text:Login)',
-        'nopermission.template' => 'error'
+        'logintype' => 'loginform', // [loginform, custom]
+        'custom.page' => '',
+        'loginform.username.name' => 'Username',
+        'loginform.username.error' => 'Please enter your username',
+        'loginform.password.name' => 'Password',
+        'loginform.password.error' => 'Please enter your password',
     ],
     'hooks' => [
         'route:after' => function ($route, $path, $method, $result) {
@@ -23,8 +28,13 @@ Kirby::plugin('kerli81/securedpages', [
                 $hook = new RouterAfterHook();
                 $result = $hook->process($result, $this->user());
 
-                if (! $result) {
-                    go('/no-permission');
+                if (!$result) {
+                    if (option('kerli81.securedpages.logintype') == 'custom') {
+                        $url = option('kerli81.securedpages.custom.page');
+                    } else {
+                        $url = url('/no-permission', ['params' => ['prevloc' => $path]]);
+                    }
+                    go($url);
                 }
             }
         }
@@ -33,20 +43,23 @@ Kirby::plugin('kerli81/securedpages', [
         [
             'pattern' => 'no-permission',
             'action' => function () {
-                return new Page([
-                    'slug' => 'no-permission',
-                    'template' => option('kerli81.securedpages.nopermission.template'),
-                    'content' => [
-                        'title' => option('kerli81.securedpages.nopermission.title'),
-                        'text' => option('kerli81.securedpages.nopermission.text')
-                    ]
-                ]);
-            }
+                if (option('kerli81.securedpages.logintype') == 'loginform') {
+                    return new Page([
+                        'slug' => 'no-permission',
+                        'template' => 'loginform'
+                    ]);
+                }
+            },
+            'method' => 'GET|POST'
         ]
     ],
     'blueprints' => [
-        'fields/securedpage' => __DIR__ . '/blueprints/fields/pagesecurity.yml'
+        'fields/kerli81.securedpages.pageconfiguration' => __DIR__ . '/blueprints/fields/pagesecurity.yml'
+    ],
+    'controllers' => [
+        'loginform' => require __DIR__ . '/src/loginform/LoginFormCtrl.php'
+    ],
+    'templates' => [
+        'loginform' => __DIR__ . '/src/loginform/LoginFormTmpl.php'
     ]
 ]);
-
-?>

@@ -5,6 +5,7 @@
 # Documents
 LICENSE.md export-ignore
 README.md export-ignore
+/.github export-ignore
 
 # Eclipse
 .buildpath export-ignore
