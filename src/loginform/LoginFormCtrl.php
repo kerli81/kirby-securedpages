@@ -14,6 +14,16 @@ return function ($kirby) {
         ],
     ]);
 
+    if (param('action') == 'logout' && $kirby->user()) {
+        $kirby->user()->logout();
+        go(url('/no-permission', ['params' => ['prevloc' => param('prevloc')]]));
+    }
+
+    $loginstatus = [
+        'user' => $kirby->user(),
+        'logouturl' =>  url('/no-permission', ['params' => ['prevloc' => param('prevloc'), 'action' => 'logout']])
+    ];
+
     if ($kirby->request()->is('POST')) {
         $form->withoutGuards()->loginAction();
 
@@ -22,5 +32,5 @@ return function ($kirby) {
         }
     }
 
-    return compact('form');
+    return compact('form', 'loginstatus');
 };

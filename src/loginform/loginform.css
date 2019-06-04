@@ -32,7 +32,7 @@
   width: 100%;
   border: 0;
   padding: 15px;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 14px;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
@@ -47,8 +47,23 @@
   padding: 15px 10px 15px 10px;
   background-repeat: no-repeat;
   background-position: 10px center;
-  color: #d8000c;
-  background-color: #ffbaba;
+  color: #a94442;
+  background-color: #f2dede;
+}
+#kerli81-securedpages-loginform .warning-text {
+  border: 1px solid;
+  margin: 10px 0px;
+  padding: 15px 10px 15px 10px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+}
+#kerli81-securedpages-loginform .warning-text a {
+  font-weight: bold;
+}
+#kerli81-securedpages-loginform .warning-text .username {
+  text-transform: uppercase;
 }
 
-/*# sourceMappingURL=kerli81.securedpages.loginform.css.map */
+/*# sourceMappingURL=loginform.css.map */

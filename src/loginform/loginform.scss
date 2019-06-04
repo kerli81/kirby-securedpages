@@ -2,10 +2,13 @@ $bg-form: #ffffff !default;
 $bg-fields: #f2f2f2 !default;
 $bg-buttons: #989898 !default;
 $bg-buttons-action: #777777 !default;
-$bg-error: #ffbaba !default;
+$bg-error: #f2dede !default;
+$bg-warning: #fcf8e3 !default;
 
-$color-error: #d8000c !default;
-$color-button: #FFFFFF !default;
+$color-error: #a94442 !default;
+$color-warning: #8a6d3b !default;
+$color-button: #ffffff !default;
+$color-link: blue !default;
 
 #kerli81-securedpages-loginform {
   .login-page {
@@ -67,5 +70,24 @@ $color-button: #FFFFFF !default;
 
     color: $color-error;
     background-color: $bg-error;
+  }
+
+  .warning-text {
+    border: 1px solid;
+    margin: 10px 0px;
+    padding: 15px 10px 15px 10px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
+
+    color: $color-warning;
+    background-color: $bg-warning;
+
+    a {
+      font-weight: bold;
+    }
+
+    .username {
+      text-transform: uppercase;
+    }
   }
 }
