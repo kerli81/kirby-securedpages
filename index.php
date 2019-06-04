@@ -58,7 +58,7 @@ Kirby::plugin('kerli81/securedpages', [
     ],
     'snippets' => [
         'kerli81.securedpages.loginform' => __DIR__ . '/src/loginform/LoginFormSnippet.php',
-        'kerli81.securedpages.loginform.css' => __DIR__ . '/assets/kerli81.securedpages.loginform.css',
+        'kerli81.securedpages.loginform.css' => __DIR__ . '/src/loginform/loginform.css',
     ],
     'controllers' => [
         'loginform' => require __DIR__ . '/src/loginform/LoginFormCtrl.php'
