@@ -56,6 +56,10 @@ Kirby::plugin('kerli81/securedpages', [
     'blueprints' => [
         'fields/kerli81.securedpages.pageconfiguration' => __DIR__ . '/blueprints/fields/pagesecurity.yml'
     ],
+    'snippets' => [
+        'kerli81.securedpages.loginform' => __DIR__ . '/src/loginform/LoginFormSnippet.php',
+        'kerli81.securedpages.loginform.css' => __DIR__ . '/assets/kerli81.securedpages.loginform.css',
+    ],
     'controllers' => [
         'loginform' => require __DIR__ . '/src/loginform/LoginFormCtrl.php'
     ],
