@@ -1,7 +1,7 @@
 
 # Kirby Secured Pages
 
-![Version](https://img.shields.io/badge/Version-1.1.1-blue.svg) ![License](https://img.shields.io/badge/License-MIT-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-3.x-f0c674.svg)
+![Version](https://img.shields.io/badge/Version-1.1.2-blue.svg) ![License](https://img.shields.io/badge/License-MIT-green.svg) ![Kirby](https://img.shields.io/badge/Kirby-3.x-f0c674.svg)
 
 With this plugin for [Kirby CMS](http://getkirby.com) you can prevent unauthorized users to access a page or a hierarchy of pages. The permission will be granted by a user group. If the user is not yet logged in, a login page will be displayed.
 
