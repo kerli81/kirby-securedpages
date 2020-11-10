@@ -32,7 +32,7 @@ Kirby::plugin('kerli81/securedpages', [
                     if (option('kerli81.securedpages.logintype') == 'custom') {
                         $url = option('kerli81.securedpages.custom.page');
                     } else {
-                        $url = url('/no-permission', ['params' => ['prevloc' => $path]]);
+                        $url = url('/no-permission', ['query' => ['prevloc' => $path]]);
                     }
                     go($url);
                 }
