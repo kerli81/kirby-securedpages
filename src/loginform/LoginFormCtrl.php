@@ -16,7 +16,7 @@ return function ($kirby) {
 
     if (param('action') == 'logout' && $kirby->user()) {
         $kirby->user()->logout();
-        go(url('/no-permission', ['params' => ['prevloc' => param('prevloc')]]));
+        go(url(get('prevloc')));
     }
 
     $loginstatus = [
@@ -28,7 +28,7 @@ return function ($kirby) {
         $form->withoutGuards()->loginAction();
 
         if ($form->success()) {
-            go(get('prevloc'));
+            go(url(get('prevloc')));
         }
     }
 
