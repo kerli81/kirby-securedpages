@@ -28,7 +28,7 @@ return function ($kirby) {
         $form->withoutGuards()->loginAction();
 
         if ($form->success()) {
-            go(get('prevloc'));
+            go(url(get('prevloc')));
         }
     }
 
