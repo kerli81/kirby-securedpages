@@ -6,6 +6,7 @@ namespace Plugin\SecuredPage;
 
 use Kirby;
 use Kirby\Cms\Page;
+use Kirby\Cms\Responder;
 
 load([
     'Plugin\SecuredPage\RouterAfterHook' => 'src/RouterAfterHook.php'
@@ -24,6 +25,9 @@ Kirby::plugin('kerli81/securedpages', [
     'hooks' => [
         'route:after' => function ($route, $path, $method, $result) {
             if ($route->env() == 'site') {
+
+                // Issue #2: Fixes multi-lang usage
+                if($result instanceof Responder) { $result = null; }
 
                 $hook = new RouterAfterHook();
                 $result = $hook->process($result, $this->user());
