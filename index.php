@@ -69,5 +69,27 @@ Kirby::plugin('kerli81/securedpages', [
     ],
     'templates' => [
         'loginform' => __DIR__ . '/src/loginform/LoginFormTmpl.php'
+    ],
+    'collectionFilters' => [
+        'OnlyUserVisiblePages' => function ($collection, $field, $test, $split = false) {
+
+            if ($field != "kerli81-securedpages") {
+                return $collection;
+            }
+
+            $user = kirby()->user();
+
+            $hook = new RouterAfterHook();
+            $result = array();
+            foreach ($collection as $item) {
+                if($item instanceof Page) {
+                    if ($hook->process($item, $user)) {
+                        $result[] = $item;
+                    }
+                }
+            }
+
+            return $result;
+        }
     ]
 ]);

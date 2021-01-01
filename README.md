@@ -57,7 +57,7 @@ columns:
             text:
             type: textarea
             size: large
-            
+
   # sidebar
   - width: 1/3
     sections:
@@ -73,7 +73,7 @@ columns:
 ![Template](/.github/template.png?raw=true "Template")
 
 ## User Group
-The plugin will check if a user is part of a certain user group. To create such a group, create a *.yml file in folder ```blueprints/users/```. You will find below an example of a group definition. 
+The plugin will check if a user is part of a certain user group. To create such a group, create a *.yml file in folder ```blueprints/users/```. You will find below an example of a group definition.
 
 ```yml
 title: Webpage Access
@@ -84,7 +84,7 @@ permissions:
     panel: false
 ```
 
-To use the group create a new user on the panel. 
+To use the group create a new user on the panel.
 
 ## Secure a page incl. sub pages
 Go to the page which you will protected and enable the protection. After you enabled it a user group selction field will be displayed. Select the just defined group.
@@ -116,3 +116,11 @@ Option | Value | Description
 ------ | ------- | -----------
 kerli81.securedpages.logintype | custom | Will trigger the page to display. Possible values are: [loginform, custom]
 kerli81.securedpages.custom.page | --- | The url (url-slug) to navigate to.
+
+## Filter the pages (i.e. in search)
+If you do some search and would like to filter the collection of pages, you could filter them like this:
+
+```php
+$results = $site->index()->listed()->filterBy('kerli81-securedpages', 'OnlyUserVisiblePages');
+```
+This example will return only the pages, which are accessable by the current user.
